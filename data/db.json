@@ -1,0 +1,64 @@
+{
+  "leseProgramme": [
+    {
+      "iD_PUB_Leseprogramm": 1,
+      "leseprogramm_Name": "Basisprogramm Print",
+      "kategorie": "INT"
+    },
+    {
+      "iD_PUB_Leseprogramm": 2,
+      "leseprogramm_Name": "ages- und Wochenzeitungen",
+      "kategorie": "Print"
+    },
+    {
+      "iD_PUB_Leseprogramm": 3,
+      "leseprogramm_Name": "Zeitschriften",
+      "kategorie": "TV"
+    },
+    {
+      "iD_PUB_Leseprogramm": 4,
+      "leseprogramm_Name": "Wochenzeitungen",
+      "kategorie": "INT"
+    },
+    {
+      "iD_PUB_Leseprogramm": 5,
+      "leseprogramm_Name": "Basisprogramm Print",
+      "kategorie": "Print"
+    },
+    {
+      "iD_PUB_Leseprogramm": 6,
+      "leseprogramm_Name": "Basisprogramm Print ohne ausl. Publikationen UND ohne Nachrichtenagenturen",
+      "kategorie": "GE"
+    },
+    {
+      "iD_PUB_Leseprogramm": 7,
+      "leseprogramm_Name": "Individuelles Programm für AN 21895",
+      "kategorie": "GE"
+    },
+    {
+      "iD_PUB_Leseprogramm": 8,
+      "leseprogramm_Name": "Basisprogramm Print",
+      "kategorie": "Radio"
+    },
+    {
+      "iD_PUB_Leseprogramm": 9,
+      "leseprogramm_Name": "Zeitschriften",
+      "kategorie": "TV"
+    },
+    {
+      "iD_PUB_Leseprogramm": 10,
+      "leseprogramm_Name": "Basisprogramm Print ohne ausl. Publikationen UND ohne Nachrichtenagenturen",
+      "kategorie": "Print"
+    },
+    {
+      "iD_PUB_Leseprogramm": 11,
+      "leseprogramm_Name": "Wochenzeitungen",
+      "kategorie": "GE"
+    },
+    {
+      "iD_PUB_Leseprogramm": 12,
+      "leseprogramm_Name": "ages- und Wochenzeitungen",
+      "kategorie": "INT"
+    }
+  ]
+}
