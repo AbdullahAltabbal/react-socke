@@ -4,35 +4,22 @@ import { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 
 const LeseProgrammTabelle = (props) => {
-  const pending = (
-    <div class="preloader-wrapper big active pendingCenter">
-      <div class="spinner-layer spinner-blue-only ">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div>
-        <div class="gap-patch">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
-  );
+  const pending = props.pending;
 
   const { data, isPending, error } = useFetch(
-    "http://localhost:8000/leseProgramme"
+    'http://localhost:8000/leseProgramme/'
   );
 
   useEffect(() => {
-    setLeseprogramme(leseprogramme)
-  }, []);
+    if (data && !error)
+      setLeseprogramme(data)
+  }, [data]);
 
   const [leseprogramme, setLeseprogramme] = useState([]);
 
 
   const updateTabelle = (searchText) => {
-    
+
     // data anhand von searchText filern
     let newData = data.filter((e) =>
       e.leseprogramm_Name.toUpperCase().includes(searchText.toUpperCase())

@@ -5,7 +5,6 @@ const SearchBar = (props) => {
 
   return (
     <div className="input-field searchbar">
-      <p>{props.sascha}</p>
       <i className="material-icons prefix">search</i>
       <input
         value={searchInput}

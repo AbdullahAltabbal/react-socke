@@ -1,64 +1,106 @@
 {
   "leseProgramme": [
     {
-      "iD_PUB_Leseprogramm": 1,
+      "id": 1,
       "leseprogramm_Name": "Basisprogramm Print",
-      "kategorie": "INT"
+      "kategorie": "INT",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 2,
+      "id": 2,
       "leseprogramm_Name": "ages- und Wochenzeitungen",
-      "kategorie": "Print"
+      "kategorie": "Print",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 3,
+      "id": 3,
       "leseprogramm_Name": "Zeitschriften",
-      "kategorie": "TV"
+      "kategorie": "TV",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 4,
+      "id": 4,
       "leseprogramm_Name": "Wochenzeitungen",
-      "kategorie": "INT"
+      "kategorie": "INT",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 5,
+      "id": 5,
       "leseprogramm_Name": "Basisprogramm Print",
-      "kategorie": "Print"
+      "kategorie": "Print",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 6,
+      "id": 6,
       "leseprogramm_Name": "Basisprogramm Print ohne ausl. Publikationen UND ohne Nachrichtenagenturen",
-      "kategorie": "GE"
+      "kategorie": "GE",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 7,
+      "id": 7,
       "leseprogramm_Name": "Individuelles Programm für AN 21895",
-      "kategorie": "GE"
+      "kategorie": "GE",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 8,
+      "id": 8,
       "leseprogramm_Name": "Basisprogramm Print",
-      "kategorie": "Radio"
+      "kategorie": "Radio",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 9,
+      "id": 9,
       "leseprogramm_Name": "Zeitschriften",
-      "kategorie": "TV"
+      "kategorie": "TV",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 10,
+      "id": 10,
       "leseprogramm_Name": "Basisprogramm Print ohne ausl. Publikationen UND ohne Nachrichtenagenturen",
-      "kategorie": "Print"
+      "kategorie": "Print",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 11,
+      "id": 11,
       "leseprogramm_Name": "Wochenzeitungen",
-      "kategorie": "GE"
+      "kategorie": "GE",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     },
     {
-      "iD_PUB_Leseprogramm": 12,
+      "id": 12,
       "leseprogramm_Name": "ages- und Wochenzeitungen",
-      "kategorie": "INT"
+      "kategorie": "INT",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
+    },
+    {
+      "id": 13,
+      "leseprogramm_Name": "Basisprogramm Print",
+      "kategorie": "INT",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "0 = 1"
     }
   ]
 }
