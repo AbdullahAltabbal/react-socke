@@ -101,6 +101,47 @@
       "beschreibung": "",
       "monitoring": true,
       "sqlBedinung": "0 = 1"
+    },
+    {
+      "id": "999",
+      "leseprogramm_Name": "seif",
+      "kategorie": "",
+      "beschreibung": "asdasd",
+      "monitoring": true,
+      "sqlBedinung": "",
+      "gruppe": "",
+      "liefrant": ""
+    },
+    {
+      "id": "46",
+      "leseprogramm_Name": "seif test",
+      "kategorie": "seif test",
+      "beschreibung": "seif test",
+      "monitoring": true,
+      "sqlBedinung": "seif test",
+      "gruppe": "",
+      "liefrant": "",
+      "schweizKompatibel": "on"
+    },
+    {
+      "id": "88",
+      "leseprogramm_Name": "test mit seif",
+      "kategorie": "test mit seif",
+      "beschreibung": "test mit seif",
+      "monitoring": true,
+      "sqlBedinung": "test mit seif",
+      "gruppe": "",
+      "liefrant": ""
+    },
+    {
+      "id": "45",
+      "leseprogramm_Name": "HALOO",
+      "kategorie": "HALOO",
+      "beschreibung": "",
+      "monitoring": true,
+      "sqlBedinung": "",
+      "gruppe": "",
+      "liefrant": ""
     }
   ]
 }

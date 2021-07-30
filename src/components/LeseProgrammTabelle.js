@@ -2,20 +2,19 @@ import React from "react";
 import useFetch from "./useFetch";
 import { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
+import Pending from "./Pending";
 
 const LeseProgrammTabelle = (props) => {
-  const pending = props.pending;
+  const IsPending = props.pending;
 
-  const { data, isPending, error } = useFetch(
-    'http://localhost:8000/leseProgramme/'
-  );
+  const data = props.data;
+
+  const [leseprogramme, setLeseprogramme] = useState(data);
 
   useEffect(() => {
-    if (data && !error)
+    if (data)
       setLeseprogramme(data)
-  }, [data]);
-
-  const [leseprogramme, setLeseprogramme] = useState([]);
+  }, [data])
 
 
   const updateTabelle = (searchText) => {
@@ -30,7 +29,7 @@ const LeseProgrammTabelle = (props) => {
   const renderTable = (input) => {
     return leseprogramme.map((lp) => {
       return (
-        <tr key={lp.iD_PUB_Leseprogramm}>
+        <tr key={lp.id}>
           <td> {lp.leseprogramm_Name} </td>
           <td> {lp.kategorie} </td>
         </tr>
@@ -38,12 +37,13 @@ const LeseProgrammTabelle = (props) => {
     });
   };
 
+
   return (
     <div>
       <SearchBar updateFunction={updateTabelle} />
-      {error && <div>{error}</div>}
-      {isPending && <div>{pending}</div>}
-      {data && (
+      {/* {error && <div>{error}</div>} */}
+      {IsPending && <div><Pending></Pending></div>}
+      {data && data.length > 0 && (
         <table className="highlight responsive-table bordered leseprogrammTable">
           <thead>
             <tr>

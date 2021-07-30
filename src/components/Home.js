@@ -1,21 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useFetch from "./useFetch";
 import EingabeMaske from "./EingabeMaske";
 import LeseProgrammTabelle from "./LeseProgrammTabelle";
 
 const Home = () => {
-    const [pending, setPending] = useState(<div class="preloader-wrapper big active pendingCenter">
-        <div class="spinner-layer spinner-blue-only ">
-            <div class="circle-clipper left">
-                <div class="circle"></div>
-            </div>
-            <div class="gap-patch">
-                <div class="circle"></div>
-            </div>
-            <div class="circle-clipper right">
-                <div class="circle"></div>
-            </div>
-        </div>
-    </div>)
+    const [tableData, settableData] = useState([])
+
+    const { data, isPending, error } = useFetch(
+        'http://localhost:8000/leseProgramme/'
+    );
+
+    useEffect(() => {
+        if (data && !error)
+            settableData(data)
+    }, [data]);
+
+    const tabellenZeigen = () => {
+        const eingabeMaske = document.getElementById("eingabeMaske");
+        // eingabeMaske.classList.add("pull-s1")
+    }
 
     return (
         <div className="row">
@@ -23,16 +26,23 @@ const Home = () => {
             <div className="col s4">
                 <h4> Leseprogramme  </h4>
                 <LeseProgrammTabelle
-                    pending={pending}
+                    data={tableData}
+                    pending={isPending}
+
                 />
             </div>
             <div className="col s1" ></div>
-            <div className="col s5">
+            <div id="eingabeMaske" className="col s5">
                 <EingabeMaske
-                    pending={pending}
+                    pending={isPending}
+                    settableData={settableData}
                 />
             </div>
-            <div className="col s1" ></div>
+            <div className="col s1" >
+                <button
+                    onClick={tabellenZeigen()}
+                    className="waves-effect waves-light btn"> Pull </button>
+            </div>
         </div>
 
     );

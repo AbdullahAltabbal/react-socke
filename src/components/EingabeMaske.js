@@ -1,4 +1,6 @@
 import { useState } from "react";
+import CheckBox from "./CheckBox";
+import useFetch from "./useFetch";
 
 const EingabeMaske = (props) => {
     // const pending = props.pending;
@@ -8,7 +10,9 @@ const EingabeMaske = (props) => {
         kategorie: '',
         beschreibung: '',
         monitoring: false,
-        sqlBedinung: ''
+        sqlBedinung: '',
+        gruppe: '',
+        liefrant: ''
     });
 
     const handleSubmit = (e) => {
@@ -17,11 +21,18 @@ const EingabeMaske = (props) => {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(leseProgramme)
-        }).then((
+        }).then(
             res => {
-                console.log(res);
-            }
-        ))
+                fetch('http://localhost:8000/leseProgramme', {
+                    method: 'GET'
+                }).then(res2 => {
+                    if (res2.ok) {
+                        res2.json().then(data => {
+                            props.settableData(data)
+                        })
+                    }
+                })
+            })
     }
 
 
@@ -42,25 +53,18 @@ const EingabeMaske = (props) => {
                         </div>
                         {/* Monitoring */}
                         <div className="inpit-field col s3" >
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    className="filled-in"
-                                    checked={leseProgramme.monitoring}
-                                    value={leseProgramme.monitoring}
-                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, monitoring: e.target.value })
-                                    }
-                                />
-                                <span>Monitoring</span>
-                            </label>
+                            <CheckBox titel="Monitoring"
+                                onChange={(e) =>
+                                    setLeseprogramme({ ...leseProgramme, monitoring: e.target.checked })}
+                                checked={leseProgramme.monitoring}
+                            />
                         </div>
+
                         {/* pressespiegel */}
                         <div className="inpit-field col s3" >
                             <label>
                                 <input
-                                    id="pressespiegel"
-                                    type="checkbox"
-                                    className="filled-in" />
+                                    type="checkbox" />
                                 <span>Pressespiegel</span>
                             </label>
                         </div>
@@ -123,35 +127,192 @@ const EingabeMaske = (props) => {
                             </button>
                         </form>
                     </div>
+                    <div className="row" ></div>
 
                     {/* checkboxen */}
                     <div className="row" >
-                        <form className="col s12">
-                            <label>
+                        <form>
+                            <label className="col s3">
                                 <input
                                     type="checkbox"
-                                    className="filled-in"
                                     // checked={leseProgramme.monitoring}
                                     // value={leseProgramme.monitoring}
-                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, monitoring: e.target.value })
+                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, schweizKompatibel: e.target.value })
                                     }
                                 />
                                 <span>Schweiz Kompatibel</span>
                             </label>
 
+                            <label className="col s3">
+                                <input
+                                    type="checkbox"
+                                    // checked={leseProgramme.monitoring}
+                                    // value={leseProgramme.monitoring}
+                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, web20: e.target.value })
+                                    }
+                                />
+                                <span>Web20</span>
+                            </label>
+
+                            <label className="col s3">
+                                <input
+                                    type="checkbox"
+                                    // checked={leseProgramme.monitoring}
+                                    // value={leseProgramme.monitoring}
+                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, InterntetInternational: e.target.value })
+                                    }
+                                />
+                                <span>Int. International</span>
+                            </label>
+
+                            <label className="col s3">
+                                <input
+                                    type="checkbox"
+                                    // checked={leseProgramme.monitoring}
+                                    // value={leseProgramme.monitoring}
+                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, Nachweiße: e.target.value })
+                                    }
+                                />
+                                <span>Nachweiße</span>
+                            </label>
+
 
                         </form>
+                        <div className="row" ></div>
                     </div>
 
+                    {/* LeseGruppe + Liefrant       */}
+                    <div className="row">
+                        <div className="inpit-field col s6" >
+                            <label> Leseprogramm Gruppe </label>
+                            <input
+                                value={leseProgramme.gruppe}
+                                type="text"
+                                onChange={(e) => setLeseprogramme({ ...leseProgramme, gruppe: e.target.value })}
+                            />
+                        </div>
+
+                        <div className="inpit-field col s5" >
+                            <label> Liefrant </label>
+                            <input
+                                type="text"
+                                value={leseProgramme.liefrant}
+                                onChange={(e) => setLeseprogramme({ ...leseProgramme, liefrant: e.target.value })}
+                            />
+                        </div>
+                        <div className="col s1">
+
+                            <button className="btn-floating btn-small waves-effect waves-light red">
+                                <i class="material-icons">delete</i>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Medien */}
+                    <div className="row" >
+                        <div className="medien col s7">
+                            <div className="row">
+                                <label className="col s3 paddingForTop">
+                                    <input
+                                        type="checkbox"
+                                        // checked={leseProgramme.monitoring}
+                                        // value={leseProgramme.monitoring}
+                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, printmedien: e.target.value })
+                                        }
+                                    />
+                                    <span>Printmedien</span>
+                                </label>
+
+                                <label className="col s3 paddingForTop center" >
+                                    <input
+                                        type="checkbox"
+                                        // checked={leseProgramme.monitoring}
+                                        // value={leseProgramme.monitoring}
+                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, internet: e.target.value })
+                                        }
+                                    />
+                                    <span>Internet</span>
+                                </label>
+
+                                <label className="col s3 paddingForTop right">
+                                    <input
+                                        type="checkbox"
+                                        // checked={leseProgramme.monitoring}
+                                        // value={leseProgramme.monitoring}
+                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, azb: e.target.value })
+                                        }
+                                    />
+                                    <span>AZB</span>
+                                </label>
+                            </div>
+
+                            <div className="row">
+                                <label className="col s3">
+                                    <input
+                                        type="checkbox"
+                                        // checked={leseProgramme.monitoring}
+                                        // value={leseProgramme.monitoring}
+                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, na: e.target.value })
+                                        }
+                                    />
+                                    <span>NA</span>
+                                </label>
+
+                                <label className="col s3 center">
+                                    <input
+                                        type="checkbox"
+                                        // checked={leseProgramme.monitoring}
+                                        // value={leseProgramme.monitoring}
+                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, redio: e.target.value })
+                                        }
+                                    />
+                                    <span>Radio</span>
+                                </label>
+
+                                <label className="col s3 right">
+                                    <input
+                                        type="checkbox"
+                                        // checked={leseProgramme.monitoring}
+                                        // value={leseProgramme.monitoring}
+                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, tv: e.target.value })
+                                        }
+                                    />
+                                    <span>TV</span>
+                                </label>
+                            </div>
+                        </div>
 
 
+                        {/* Enthaltene Mengenzuordnungen */}
+                        <div className="col s5" >
+                            <label className="col s5 submissions"> Enthaltene Mengenzuordnungen </label>
+                            <div className="input-field col s7">
+                                <input
+                                    disabled
+                                    value={leseProgramme.enthalteneMengenzuordnungen}
+                                    type="text"
+                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, enthalteneMengenzuordnungen: e.target.value })} />
+                            </div>
+                        </div>
+                    </div>
 
-                    {/* submit Button */}
-                    <button
-                        onClick={handleSubmit}
-                        className="btn waves-effect blue-grey darken-1" >Submit
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <div className="row" ></div>
+
+
+                    {/* submit & Verweerfen Button  */}
+                    <div className="row">
+                        <button
+                            onClick={handleSubmit}
+                            className="btn waves-effect blue-grey darken-1" >Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+
+                        <button
+                            className="btn waves-effect red" >Verwerfen
+                            <i class="material-icons right">delete</i>
+                        </button>
+                    </div>
+
 
                 </form>
             </div>
