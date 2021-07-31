@@ -1,6 +1,5 @@
 import { useState } from "react";
 import CheckBox from "./CheckBox";
-import useFetch from "./useFetch";
 
 const EingabeMaske = (props) => {
     // const pending = props.pending;
@@ -10,9 +9,19 @@ const EingabeMaske = (props) => {
         kategorie: '',
         beschreibung: '',
         monitoring: false,
+        pressespiegel: false,
         sqlBedinung: '',
         gruppe: '',
-        liefrant: ''
+        liefrant: '',
+        schweizKompatibel: false,
+        interntetInternational: false,
+        web20: false,
+        printmedien: false,
+        na: false,
+        radio: false,
+        tv: false,
+        azb: false,
+        nachweiße: false
     });
 
     const handleSubmit = (e) => {
@@ -62,18 +71,18 @@ const EingabeMaske = (props) => {
 
                         {/* pressespiegel */}
                         <div className="inpit-field col s3" >
-                            <label>
-                                <input
-                                    type="checkbox" />
-                                <span>Pressespiegel</span>
-                            </label>
+                            <CheckBox titel="Pressespiegel"
+                                onChange={(e) =>
+                                    setLeseprogramme({ ...leseProgramme, pressespiegel: e.target.checked })}
+                                checked={leseProgramme.pressespiegel}
+                            />
                         </div>
                     </div>
+
                     {/* leseprogramm Name */}
                     <div className="row">
                         <div className="inpit-field col s6" >
-                            <label htmlFor="leseprogramm_Name"
-                            > Leseprogramm Name </label>
+                            <label> Leseprogramm Name </label>
                             <input
                                 value={leseProgramme.leseprogramm_Name}
                                 type="text"
@@ -92,7 +101,7 @@ const EingabeMaske = (props) => {
                     </div>
 
                     {/* Beschreibung */}
-                    <div class="row">
+                    <div className="row">
                         <form className="col s12">
                             <label>Beschreibung</label>
                             <textarea
@@ -133,50 +142,36 @@ const EingabeMaske = (props) => {
                     <div className="row" >
                         <form>
                             <label className="col s3">
-                                <input
-                                    type="checkbox"
-                                    // checked={leseProgramme.monitoring}
-                                    // value={leseProgramme.monitoring}
-                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, schweizKompatibel: e.target.value })
-                                    }
+                                <CheckBox titel="Schweiz Kompatibel"
+                                    onChange={(e) =>
+                                        setLeseprogramme({ ...leseProgramme, schweizKompatibel: e.target.checked })}
+                                    checked={leseProgramme.schweizKompatibel}
                                 />
-                                <span>Schweiz Kompatibel</span>
                             </label>
 
                             <label className="col s3">
-                                <input
-                                    type="checkbox"
-                                    // checked={leseProgramme.monitoring}
-                                    // value={leseProgramme.monitoring}
-                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, web20: e.target.value })
-                                    }
+                                <CheckBox titel="Web20"
+                                    onChange={(e) =>
+                                        setLeseprogramme({ ...leseProgramme, web20: e.target.checked })}
+                                    checked={leseProgramme.web20}
                                 />
-                                <span>Web20</span>
                             </label>
 
                             <label className="col s3">
-                                <input
-                                    type="checkbox"
-                                    // checked={leseProgramme.monitoring}
-                                    // value={leseProgramme.monitoring}
-                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, InterntetInternational: e.target.value })
-                                    }
+                                <CheckBox titel="Interntet International"
+                                    onChange={(e) =>
+                                        setLeseprogramme({ ...leseProgramme, interntetInternational: e.target.checked })}
+                                    checked={leseProgramme.interntetInternational}
                                 />
-                                <span>Int. International</span>
                             </label>
 
                             <label className="col s3">
-                                <input
-                                    type="checkbox"
-                                    // checked={leseProgramme.monitoring}
-                                    // value={leseProgramme.monitoring}
-                                    onChange={(e) => setLeseprogramme({ ...leseProgramme, Nachweiße: e.target.value })
-                                    }
+                                <CheckBox titel="Nachweiße"
+                                    onChange={(e) =>
+                                        setLeseprogramme({ ...leseProgramme, nachweiße: e.target.checked })}
+                                    checked={leseProgramme.nachweiße}
                                 />
-                                <span>Nachweiße</span>
                             </label>
-
-
                         </form>
                         <div className="row" ></div>
                     </div>
@@ -209,75 +204,58 @@ const EingabeMaske = (props) => {
                     </div>
 
                     {/* Medien */}
+                    col s3 paddingForTop
                     <div className="row" >
                         <div className="medien col s7">
                             <div className="row">
                                 <label className="col s3 paddingForTop">
-                                    <input
-                                        type="checkbox"
-                                        // checked={leseProgramme.monitoring}
-                                        // value={leseProgramme.monitoring}
-                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, printmedien: e.target.value })
-                                        }
+                                    <CheckBox titel="Printmedien"
+                                        onChange={(e) =>
+                                            setLeseprogramme({ ...leseProgramme, printmedien: e.target.checked })}
+                                        checked={leseProgramme.printmedien}
                                     />
-                                    <span>Printmedien</span>
                                 </label>
 
                                 <label className="col s3 paddingForTop center" >
-                                    <input
-                                        type="checkbox"
-                                        // checked={leseProgramme.monitoring}
-                                        // value={leseProgramme.monitoring}
-                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, internet: e.target.value })
-                                        }
+                                    <CheckBox titel="Internet"
+                                        onChange={(e) =>
+                                            setLeseprogramme({ ...leseProgramme, internet: e.target.checked })}
+                                        checked={leseProgramme.internet}
                                     />
-                                    <span>Internet</span>
                                 </label>
 
                                 <label className="col s3 paddingForTop right">
-                                    <input
-                                        type="checkbox"
-                                        // checked={leseProgramme.monitoring}
-                                        // value={leseProgramme.monitoring}
-                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, azb: e.target.value })
-                                        }
+                                    <CheckBox titel="AZB"
+                                        onChange={(e) =>
+                                            setLeseprogramme({ ...leseProgramme, azb: e.target.checked })}
+                                        checked={leseProgramme.azb}
                                     />
-                                    <span>AZB</span>
                                 </label>
                             </div>
 
                             <div className="row">
                                 <label className="col s3">
-                                    <input
-                                        type="checkbox"
-                                        // checked={leseProgramme.monitoring}
-                                        // value={leseProgramme.monitoring}
-                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, na: e.target.value })
-                                        }
+                                    <CheckBox titel="NA"
+                                        onChange={(e) =>
+                                            setLeseprogramme({ ...leseProgramme, na: e.target.checked })}
+                                        checked={leseProgramme.na}
                                     />
-                                    <span>NA</span>
                                 </label>
 
                                 <label className="col s3 center">
-                                    <input
-                                        type="checkbox"
-                                        // checked={leseProgramme.monitoring}
-                                        // value={leseProgramme.monitoring}
-                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, redio: e.target.value })
-                                        }
+                                    <CheckBox titel="Radio"
+                                        onChange={(e) =>
+                                            setLeseprogramme({ ...leseProgramme, radio: e.target.checked })}
+                                        checked={leseProgramme.radio}
                                     />
-                                    <span>Radio</span>
                                 </label>
 
                                 <label className="col s3 right">
-                                    <input
-                                        type="checkbox"
-                                        // checked={leseProgramme.monitoring}
-                                        // value={leseProgramme.monitoring}
-                                        onChange={(e) => setLeseprogramme({ ...leseProgramme, tv: e.target.value })
-                                        }
+                                    <CheckBox titel="TV"
+                                        onChange={(e) =>
+                                            setLeseprogramme({ ...leseProgramme, tv: e.target.checked })}
+                                        checked={leseProgramme.tv}
                                     />
-                                    <span>TV</span>
                                 </label>
                             </div>
                         </div>
@@ -304,16 +282,14 @@ const EingabeMaske = (props) => {
                         <button
                             onClick={handleSubmit}
                             className="btn waves-effect blue-grey darken-1" >Submit
-                            <i class="material-icons right">send</i>
+                            <i className="material-icons right">send</i>
                         </button>
 
                         <button
                             className="btn waves-effect red" >Verwerfen
-                            <i class="material-icons right">delete</i>
+                            <i className="material-icons right">delete</i>
                         </button>
                     </div>
-
-
                 </form>
             </div>
 

@@ -47,3 +47,7 @@ code {
   margin-top: 10px;
   font-size: 20px !important;
 }
+
+.tableHeigt{
+  max-height: 10px;
+}
