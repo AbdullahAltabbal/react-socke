@@ -1,6 +1,6 @@
 const Pending = () => {
     return (
-        <div classNameName="preloader-wrapper big active pendingCenter">
+        <div className="preloader-wrapper big active pendingCenter">
             <div className="spinner-layer spinner-blue-only ">
                 <div className="circle-clipper left">
                     <div className="circle"></div>

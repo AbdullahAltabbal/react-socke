@@ -101,6 +101,25 @@
       "beschreibung": "",
       "monitoring": true,
       "sqlBedinung": "0 = 1"
+    },
+    {
+      "id": "100",
+      "monitoring": true,
+      "pressespiegel": true,
+      "leseprogramm_Name": "es hat geklappt",
+      "kategorie": "es hat geklappt",
+      "beschreibung": "es hat geklappt",
+      "sqlBedinung": "es hat geklappt",
+      "schweizKompatibel": true,
+      "web20": true,
+      "interntetInternational": true,
+      "nachweiße": true,
+      "azb": true,
+      "tv": true,
+      "radio": true,
+      "internet": true,
+      "printmedien": true,
+      "na": true
     }
   ]
 }

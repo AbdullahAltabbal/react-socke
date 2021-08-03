@@ -6,6 +6,8 @@ import LeseProgrammTabelle from "./LeseProgrammTabelle";
 const Home = () => {
     const [tableData, settableData] = useState([])
 
+    const [selected, setSelected] = useState([])
+
     const { data, isPending, error } = useFetch(
         'http://localhost:8000/leseProgramme/'
     );
@@ -15,10 +17,14 @@ const Home = () => {
             settableData(data)
     }, [data]);
 
-    const tabellenZeigen = () => {
-        const eingabeMaske = document.getElementById("eingabeMaske");
-        // eingabeMaske.classList.add("pull-s1")
+    let showSelected = (selected) => {
+        setSelected(selected)
     }
+
+    const toggle = (e) => {
+        // eingabeMaskeDiv = document.getElementById("eingabe");
+    }
+
 
     return (
         <div className="row">
@@ -26,23 +32,32 @@ const Home = () => {
             <div className="col s4">
                 <h4> Leseprogramme  </h4>
                 <LeseProgrammTabelle
+                    selectLp={showSelected}
                     data={tableData}
                     pending={isPending}
 
                 />
             </div>
             <div className="col s1" ></div>
-            <div id="eingabeMaske" className="col s5">
+            <div id="eingabe" className="col s5">
                 <EingabeMaske
                     pending={isPending}
                     settableData={settableData}
+                    selectedLp={selected}
                 />
             </div>
             <div className="col s1" >
                 <button
-                    onClick={tabellenZeigen()}
-                    className="waves-effect waves-light btn"> Pull </button>
+                    onClick={toggle()}
+                    className="waves-effect waves-light btn"> push </button>
             </div>
+            {/* <div id="tabels" className="col" >
+                <h1>am hier</h1>
+                <h1>am hier</h1>
+                <h1>am hier</h1>
+                <h1>am hier</h1>
+                <h1>am hier</h1>
+            </div> */}
         </div>
 
     );

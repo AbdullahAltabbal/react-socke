@@ -51,3 +51,7 @@ code {
 .tableHeigt{
   max-height: 10px;
 }
+
+.selected{
+  background-color: #546e7a;
+}

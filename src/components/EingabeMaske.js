@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CheckBox from "./CheckBox";
 
 const EingabeMaske = (props) => {
@@ -21,8 +21,10 @@ const EingabeMaske = (props) => {
         radio: false,
         tv: false,
         azb: false,
-        nachweiße: false
+        nachweiße: false,
     });
+
+    let selected = props.selectedLp;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,16 +46,26 @@ const EingabeMaske = (props) => {
             })
     }
 
+    useEffect(() => {
+        setLeseprogramme(selected)
+    }, [selected])
+
+    const clearLief = () => {
+        let inputLiefr = document.getElementById("liefrant")
+        inputLiefr = " "
+    }
+
 
     return (
         <div>
             <h4>Leseprogramme Einrichten</h4>
+            <div className="row" ></div>
             <div className="row" >
                 <form className="col s12">
                     <div className="row">
                         {/* Leseprogramm Id  */}
                         <div className="inpit-field col s6" >
-                            <label for="first_name">Leseprogramm ID</label>
+                            <label>Leseprogramm ID</label>
                             <input
                                 type="text"
                                 value={leseProgramme.id}
@@ -190,6 +202,7 @@ const EingabeMaske = (props) => {
                         <div className="inpit-field col s5" >
                             <label> Liefrant </label>
                             <input
+                                id="liefrant"
                                 type="text"
                                 value={leseProgramme.liefrant}
                                 onChange={(e) => setLeseprogramme({ ...leseProgramme, liefrant: e.target.value })}
@@ -197,14 +210,15 @@ const EingabeMaske = (props) => {
                         </div>
                         <div className="col s1">
 
-                            <button className="btn-floating btn-small waves-effect waves-light red">
+                            <button
+                                onClick={clearLief()}
+                                className="btn-floating btn-small waves-effect waves-light red">
                                 <i class="material-icons">delete</i>
                             </button>
                         </div>
                     </div>
 
                     {/* Medien */}
-                    col s3 paddingForTop
                     <div className="row" >
                         <div className="medien col s7">
                             <div className="row">
